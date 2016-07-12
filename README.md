@@ -85,21 +85,21 @@ The repository interface provides the following methods:
 ``` php
 public function all($with = [], $orderBy = []);
 
-public function find($id, $relations = array());
+public function find($id, $relations = []);
 
-public function findBy($attribute, $value, $columns = array('*'));
+public function findBy($attribute, $value, $columns = ['*']);
 
 public function findAllBy($attribute, $value, $columns = array('*'));
 
 public function findWhere($where, $columns = ['*'], $or = false);
 
-public function paginate($perPage = 25, $columns = array('*'));
+public function paginate($perPage = 25, $columns = ['*']);
 
 public function simplePaginate($limit = null, $columns = ['*']);
 
-public function create($attributes = array());
+public function create($attributes = []);
 
-public function edit($id, $attributes = array());
+public function edit($id, $attributes = []);
 
 public function delete($id);
 ```
@@ -118,7 +118,9 @@ $data = $this->model->findAllBy('category', $category);
 //returns with ->get()
 $data = $this->model->findWhere([
             'category' => $category,
-           ['year', '>' , $year]
+           ['year', '>' , $year],
+           ['name', 'like', "%$name%"],
+           ['surname', 'like', '%nes']
      ]);
 ```
 
